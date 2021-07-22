@@ -12,7 +12,6 @@ Role Variables
 --------------
 
 validity:          - validity duration of signed sertificate
-crt_suffix:        - sertificate suffix for auto file name generation
 crt_src_path:      - path to sertificates
 req_src_file:      - local path to sert file
 local_signed_crt:  - local path to signed file
@@ -32,8 +31,13 @@ None
 Example Playbook
 ----------------
 
-  ls -1 | xargs -i ansible-playbook viacheslavisaev.sign-cert -i $(CA_HOST), --extra-vars "crt_suffix={}"
+Running play book
+```
+  ls -1 | xargs -i ansible-playbook sign-cert -i $(CA_HOST), --extra-vars "crt_src_path={}"
+```
 
+Signing multiple sertificates
+```
   - name: myrole
     with_items:
       - "aone"
@@ -41,6 +45,7 @@ Example Playbook
       name: viacheslavisaev.sign-cert
     vars:
       crt_suffix: "{{ item }}"
+```
 
 License
 -------
