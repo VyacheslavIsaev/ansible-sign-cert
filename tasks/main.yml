@@ -1,29 +1,29 @@
 ---
 # tasks file for sign-cert
-- name: Copy request file to CA - {{req_src_file}}
+- name: Copy request file to CA - {{ req_src_file }}
   copy:
-    src:  "{{req_src_file}}"
-    dest: "{{req_file}}"
+    src:  "{{ req_src_file }}"
+    dest: "{{ req_file }}"
 
 - name: Sign certificate
-  shell: ./sign.sh {{req_file}} {{signed_file}} {{validity}}
+  shell: ./sign.sh {{ req_file }} {{ signed_file}} {{validity }}
   args:
     chdir: "{{cert_folder}}"
 
-- name: Fetching signed certificate - {{local_signed_crt}}
+- name: Fetching signed certificate - {{ local_signed_crt }}
   fetch:
-    src:  "{{signed_file}}"
-    dest: "{{local_signed_crt}}"
+    src:  "{{ signed_file }}"
+    dest: "{{ local_signed_crt }}"
     flat: yes
 
 - name: Fetching CA certificate
   fetch:
-    src:  "{{cert_folder}}/ca-cert"
-    dest: "{{local_ca_crt}}"
+    src:  "{{ cert_folder }}/ca-cert"
+    dest: "{{ local_ca_crt }}"
     flat: yes
 
 - name: Cleaning
-  file: path="{{item}}" state=absent
+  file: path="{{ item }}" state=absent
   with_items: 
     - "{{ req_file }}"
     - "{{ signed_file }}"
