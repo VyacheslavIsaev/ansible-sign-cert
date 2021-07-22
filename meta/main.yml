@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: sign-cert
+  role_name: sign_cert
   author: Viacheslav Isaev
   description: Signs certificate by authority
 
