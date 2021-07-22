@@ -1,0 +1,14 @@
+---
+# defaults file for sign-cert
+crt_suffix: xxx
+crt_src_path:      "{{crt_suffix}}"
+req_src_file:      "{{crt_src_path}}/{{crt_suffix}}.cert.req"
+local_signed_crt:  "{{crt_src_path}}/{{crt_suffix}}.cert.signed"
+local_ca_crt:      "{{crt_src_path}}/ca-cert"
+req_file: /tmp/client-cert-sign-request
+signed_file: /tmp/client-cert-signed
+cert_folder: /var/ssl/
+deploy_sign_sh: yes
+ca-cert: ca-cert
+ca-key:  ca-key
+validity: 825
