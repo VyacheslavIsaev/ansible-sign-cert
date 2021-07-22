@@ -33,7 +33,7 @@ Example Playbook
 
 Running play book
 ```
-  ls -1 | xargs -i ansible-playbook sign-cert -i $(CA_HOST), --extra-vars "crt_src_path={}"
+  ls -1 | xargs -i ansible-playbook sign-cert -i $CA_HOST, --extra-vars "crt_src_path={}"
 ```
 
 Signing multiple sertificates
